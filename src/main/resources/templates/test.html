@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" type="text/css" href="styles.css">
+    <title>Форма с полями</title>
+</head>
+<body>
+<div class="container">
+    <form onsubmit="return validateForm()">
+        <label for="firstName">Имя:</label>
+        <input type="text" id="firstName" name="firstName" required>
+
+        <label for="lastName">Фамилия:</label>
+        <input type="text" id="lastName" name="lastName" required>
+
+        <label for="age">Возраст:</label>
+        <input type="number" id="age" name="age" required>
+
+        <button type="submit">Отправить</button>
+    </form>
+</div>
+
+<script>
+    function validateForm() {
+        var firstName = document.getElementById('firstName').value;
+        var lastName = document.getElementById('lastName').value;
+        var age = document.getElementById('age').value;
+
+        if (firstName.trim() === '' || lastName.trim() === '' || age.trim() === '') {
+            alert('Пожалуйста, заполните все поля.');
+            return false;
+        }
+
+        if (!/^[a-zA-Zа-яА-Я]+$/.test(firstName) || !/^[a-zA-Zа-яА-Я]+$/.test(lastName)) {
+            alert('Имя и фамилия должны содержать только буквы.');
+            return false;
+        }
+
+        if (isNaN(age) || age < 0) {
+            alert('Пожалуйста, введите корректный возраст.');
+            return false;
+        }
+
+        return true;
+    }
+</script>
+</body>
+</html>
