@@ -20,7 +20,7 @@ public class Reservation {
     private int id;
 
     @NotEmpty(message = "Заполните имя")
-//    @Size(min = 2, max = 12, message = "Имя должно содержать от 2 до 12 символов")
+    @Size(min = 2, max = 12, message = "Имя должно содержать от 2 до 12 символов")
     @Column(name = "name")
     private String name;
 
